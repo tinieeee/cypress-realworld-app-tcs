@@ -26,12 +26,6 @@ class LoginPage{
     }
 
     loginWithIncorrectCredentials(username: string, rememberMe: boolean = false){
-      // cy.fixture("user_login").then((user)=>{
-      //   const randomUsername = user.username[Math.floor(Math.random() * user.username.length)];
-      //   cy.get(this.usernameInput).type(randomUsername);
-      //   cy.get(this.passwordInput).type('incorrectPassword');
-      //   cy.get(this.signinSubmit).click();
-      // })
       cy.get(this.usernameInput).type(username);
       cy.get(this.passwordInput).type('incorrectPassword');
       if(rememberMe){
@@ -42,6 +36,13 @@ class LoginPage{
     loginWithNoInputs(){
       cy.get(this.usernameInput).type('{selectall}{backspace}'); // this means to simulate empty input
       cy.get(this.passwordInput).type('{selectall}{backspace}'); //this means to simulate empty input
+    }
+
+    loginPasswordlessthan4chars(rememberMe: boolean = true){
+      cy.get(this.passwordInput).type('123');
+      if(rememberMe){
+        cy.get(this.rememberMeCheckbox).check();
+      }
     }
 
     clickSignInButton(){

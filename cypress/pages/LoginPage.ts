@@ -45,8 +45,8 @@ class LoginPage{
       }
     }
 
-    clickSignInButton(){
-      cy.get(this.signinSubmit).click();
+    SignInButton(){
+      return cy.get(this.signinSubmit);
     }
 
 }

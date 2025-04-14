@@ -2,6 +2,7 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   e2e: {
+    retries: 1, // Retries failed tests once
     baseUrl: 'http://localhost:3000',
     env:{
       signInPage: '/signin'

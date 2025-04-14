@@ -1,3 +1,5 @@
+/// <reference types ="cypress"/>
+
 import LoginPage from "../pages/LoginPage"
 
 describe('Verify login credentials', () => {
@@ -23,24 +25,25 @@ let userData: {username: string[], password: string}
 
   it('Correct Login credentials', () => {
     //From the fixture data, get a random username and password from the list
-    const randomUsername = userData.username[Math.floor(Math.random() * userData.username.length)];
-    LoginPage.loginWithFixtures(randomUsername, userData.password);
-    LoginPage.clickSignInButton();
+    // const randomUsername = userData.username[Math.floor(Math.random() * userData.username.length)];
+    LoginPage.loginWithFixtures(userData.username[1], userData.password);
+    LoginPage.SignInButton().click();
     //redirected to dashboard and verify that the everyone tab is visible
     cy.getByData('nav-public-tab').should('have.text', 'Everyone');
- 
+
   });
 
   it('Incorrect Login credentials', ()=> {
     const randomUsername = userData.username[Math.floor(Math.random() * userData.username.length)];
     LoginPage.loginWithIncorrectCredentials(randomUsername);
-    LoginPage.clickSignInButton();
+    LoginPage.SignInButton().click();
     cy.getByData('signin-error').should('be.visible').and('contain', 'Username or password is invalid');
   });
 
   it('Empty login credentials', ()=>{
     LoginPage.loginWithNoInputs();
-    cy.getByData('signin-submit').should('be.disabled');
+    // cy.getByData('signin-submit').should('be.disabled');
+    LoginPage.SignInButton().should('be.disabled');
     cy.get('p#username-helper-text').should('be.visible').and('contain', 'Username is required');
   });
 

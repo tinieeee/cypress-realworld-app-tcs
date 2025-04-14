@@ -1,3 +1,5 @@
+/// <reference types ="cypress"/>
+
 import SignUpPage from "../pages/SignUpPage"
 
 describe('Verify Signup Test Cases', ()=>{

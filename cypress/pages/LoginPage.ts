@@ -12,7 +12,7 @@ class LoginPage{
    private rememberMeCheckbox: string = 'input.PrivateSwitchBase-input';
 
     VisitLoginPage() {
-        cy.visit(`${this.baseUrl}${this.loginPath}`);
+        return cy.visit(`${this.baseUrl}${this.loginPath}`);
     }
 
 
@@ -22,7 +22,7 @@ class LoginPage{
       if(rememberMe){
         cy.get(this.rememberMeCheckbox).check();
       }
-
+      return cy;
     }
 
     loginWithIncorrectCredentials(username: string, rememberMe: boolean = false){
@@ -31,11 +31,13 @@ class LoginPage{
       if(rememberMe){
         cy.get(this.rememberMeCheckbox).check();
       }
+      return cy;
     }
 
     loginWithNoInputs(){
       cy.get(this.usernameInput).type('{selectall}{backspace}'); // this means to simulate empty input
       cy.get(this.passwordInput).type('{selectall}{backspace}'); //this means to simulate empty input
+      return cy;
     }
 
     loginPasswordlessthan4chars(rememberMe: boolean = true){
@@ -43,6 +45,7 @@ class LoginPage{
       if(rememberMe){
         cy.get(this.rememberMeCheckbox).check();
       }
+      return cy;
     }
 
     SignInButton(){

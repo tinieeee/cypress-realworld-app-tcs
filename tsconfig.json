@@ -9,6 +9,6 @@
       "resolveJsonModule": true,
       "esModuleInterop": true
     },
-    "include": ["cypress/**/*.ts"]
+    "include": ["cypress/**/*.ts", "cypress/e2e/loginFeature/login.steps.ts"]
   }
   

@@ -3,7 +3,7 @@
 import LoginPage from "../pages/LoginPage"
 import SideNav from "../pages/SideNav"
 
-describe(" Home Page", ()=>{
+describe("SideNav", ()=>{
     let userData: {username: string[], password: string}
 
     interface NavButton {
